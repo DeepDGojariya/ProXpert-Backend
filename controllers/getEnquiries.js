@@ -1,6 +1,7 @@
 //Imports
 const PropertyEnquiry = require('../models/PropertyEnquiry')
 
+
 //getEnquiries controller
 const getEnquiries = async(req,res)=>{
     try {
@@ -13,6 +14,8 @@ const getEnquiries = async(req,res)=>{
                 number:buyer.number
             })
         })
+        
+        
         return res.status(200).json({success:true,buyersList})        
     } catch (error) {
         return res.status(400).json({success:false,error})

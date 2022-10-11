@@ -16,7 +16,9 @@ const getAllProperties = async(req,res)=>{
                     address:property.address,
                     location:property.address,
                     locality:property.locality,
-                    noBHK:property.noBHK
+                    noBHK:property.noBHK,
+                    type:property.type,
+                    owner:property.owner
                 })
             })
             return res.status(200).json({success:true,properties:propertyArr})

@@ -13,6 +13,7 @@ const PropertySchema = new mongoose.Schema({
     location:{type:String,required:true},
     locality:{type:String,required:true},
     noBHK:{type:String,required:true},
+    type:{type:String,required:true},
     status:{type:String,default:"pending",required:true}
 },
 {collection:'Properties'}

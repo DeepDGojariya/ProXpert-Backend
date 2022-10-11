@@ -12,7 +12,9 @@ const getProperty = async(req,res)=>{
                 address:property.address,
                 location:property.location,
                 locality:property.locality,
-                noBHK:property.noBHK
+                noBHK:property.noBHK,
+                type:property.type,
+                owner:property.owner
             }
             return res.status(200).json({success:true,property:response})        
         }else{

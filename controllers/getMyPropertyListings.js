@@ -17,6 +17,7 @@ const getMyPropertyListings = async(req,res)=>{
                     location:property.address,
                     locality:property.locality,
                     noBHK:property.noBHK,
+                    type:property.type,
                     status:property.status
                 })
             })

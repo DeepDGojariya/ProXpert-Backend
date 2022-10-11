@@ -7,17 +7,20 @@ const User = require('../models/User')
 const addProperty = async(req,res)=>{
     //Todo check  if currentuser email and email in ownmer data matches
     // Or just make the owner fields not editable and prepopulated in the frontend.so always we will get same email
-    const{owner,title,address,location,locality,noBHK} = req.body
+    const{owner,title,address,location,locality,noBHK,type} = req.body
     try {
-        const user = await User.findOne({email:owner.email}).lean()
+        const user = await User.findOne({"username":owner.name})
+        console.log(user.length);
         if(user){
+            
             const response = await Property.create({
                 owner,
                 title,
                 address,
                 location,
                 locality,
-                noBHK
+                noBHK,
+                type
             })
             return res.status(200).json({success:true,response})
         }else{

@@ -22,16 +22,16 @@ const router = express.Router()
 //User Routes
 router.route('/register').post(register)
 router.route('/login').post(login)
-router.route('/add-property').post(auth,addProperty)
+router.route('/add-property').post(addProperty)
 router.route('/get-all-properties').get(getAllProperties)
-router.route('/get-a-property/:id').get(auth,getProperty)
-router.route('/get-my-property-listings/:username').get(auth,getMyPropertyListings)//used by seller
-router.route('/get-owner-info/:id').get(auth,getOwnerInfo)//used by buyer
-router.route('/add-enquiry/:id').post(auth,subscribed,addEnquiry)//used by buyer
-router.route('/add-subscription').patch(auth,addSubscription)//Subscription
-router.route('/get-enquiries/:id').get(auth,getEnquiries)//used by seller
-router.route('/get-my-enquiries/:username').get(auth,getMyEnquiries)//used by buyer:-kaha kaha muh maara hai
+router.route('/get-a-property/:id').get(getProperty)
+router.route('/get-my-property-listings/:username').get(getMyPropertyListings)//used by seller
+router.route('/get-owner-info/:id').get(getOwnerInfo)//used by buyer
+router.route('/add-enquiry/:id').post(addEnquiry)//used by buyer
+router.route('/add-subscription').patch(addSubscription)//Subscription
+router.route('/get-enquiries/:id').get(getEnquiries)//used by seller
+router.route('/get-my-enquiries/:username').get(getMyEnquiries)//used by buyer:-kaha kaha muh maara hai
 router.route('/filter-property').get(getFilteredProperties)
-router.route('/delete-my-property/:id').delete(auth,deleteMyProperty)
+router.route('/delete-my-property/:id').delete(deleteMyProperty)
 
 module.exports = router
