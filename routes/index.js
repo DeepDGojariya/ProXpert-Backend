@@ -15,6 +15,9 @@ const getEnquiries = require('../controllers/getEnquiries')
 const getMyEnquiries = require('../controllers/getMyEnquiries')
 const getFilteredProperties = require('../controllers/getFilteredProperties')
 const deleteMyProperty = require('../controllers/deleteMyProperty')
+const getUsers = require('../controllers/getUsers')
+const deleteUser = require('../controllers/deleteUser')
+const approveProperty = require('../controllers/approveProperty')
 
 //Declaring the router
 const router = express.Router()
@@ -22,6 +25,7 @@ const router = express.Router()
 //User Routes
 router.route('/register').post(register)
 router.route('/login').post(login)
+router.route('/get-users').get(getUsers)
 router.route('/add-property').post(addProperty)
 router.route('/get-all-properties').get(getAllProperties)
 router.route('/get-a-property/:id').get(getProperty)
@@ -33,5 +37,7 @@ router.route('/get-enquiries/:id').get(getEnquiries)//used by seller
 router.route('/get-my-enquiries/:username').get(getMyEnquiries)//used by buyer:-kaha kaha muh maara hai
 router.route('/filter-property').get(getFilteredProperties)
 router.route('/delete-my-property/:id').delete(deleteMyProperty)
+router.route('/delete-user/:id').delete(deleteUser)
+router.route('/approve-property/:id').patch(approveProperty)
 
 module.exports = router

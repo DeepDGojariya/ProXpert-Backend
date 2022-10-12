@@ -3,10 +3,11 @@ const Property = require('../models/Property')
 
 //getFilteredProperties controller
 const getFilteredProperties = async(req,res)=>{
-    const bhk = req.query.bhk
+    const type = req.query.type
     const location = [req.query.location]
+    
     try {
-        const properties = await Property.find({noBHK:bhk,location:{$in:location}})
+        const properties = await Property.find({$and:[{status:"approved"},{type:type},{location:{$in:location}}]})
         if(properties.length===0){
             return res.status(404).json({success:true,message:"No Properties Found"})
         }
@@ -16,9 +17,10 @@ const getFilteredProperties = async(req,res)=>{
                 id:property._id,
                 title:property.title,
                 address:property.address,
-                location:property.address,
+                location:property.location,
                 locality:property.locality,
-                noBHK:property.noBHK
+                noBHK:property.noBHK,
+                type:type
             })
         })
         return res.status(200).json({success:true,propertiesData})
